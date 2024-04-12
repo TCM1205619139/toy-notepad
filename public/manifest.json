@@ -1,0 +1,41 @@
+{
+  "name": "toylat",
+  "manifest_version": 3,
+  "version": "0.0.1",
+  "description": "Sweet·Tang's toy",
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "webRequest",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.baidu.com/",
+    "http://localhost/",
+    "*://*/*"
+  ],
+  "options_page": "html/option.html",
+  "action": {
+    "default_popup": "html/popup.html"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "*" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}
