@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { PlusOutlined } from '@ant-design/icons'
-import { Tree, Space, Divider, Button } from 'antd'
-import type { TreeDataNode } from 'antd'
-import Gather from '@/components/catalogue/gather'
+import { Divider, Button } from '@/components'
+// import Gather from '@/components/catalogue/gather'
 import './index.scss'
 
 const Catalogue: React.FC = () => {
-  const [gathers, setGathers] = useState<TreeDataNode[]>([
+  const [gathers, setGathers] = useState<any[]>([
       {
         title: '工作日志',
         key: '工作日志',
@@ -37,21 +35,19 @@ const Catalogue: React.FC = () => {
 
   return (
     <section className="catalogue-container">
-      <Space>
-        <Button type="text" size="small" icon={<PlusOutlined />} >add a section</Button>
-      </Space>
-      <Divider style={{ margin: '6px 0' }}/>
-      <Tree
-        defaultExpandedKeys={defaultExpandedKeys}
-        blockNode
-        showIcon
-      >
-        {
-          gathers.map(gather => {
-            return Gather(gather)
-          })
-        }
-      </Tree>
+      <Button size="small" >add a section</Button>
+      <Divider style={{ margin: '6px 0' }} direction="horizontal"/>
+      {/*<Tree*/}
+      {/*  defaultExpandedKeys={defaultExpandedKeys}*/}
+      {/*  blockNode*/}
+      {/*  showIcon*/}
+      {/*>*/}
+      {/*  {*/}
+      {/*    gathers.map(gather => {*/}
+      {/*      return Gather(gather)*/}
+      {/*    })*/}
+      {/*  }*/}
+      {/*</Tree>*/}
     </section>
   )
 }

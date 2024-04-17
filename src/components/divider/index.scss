@@ -1,0 +1,17 @@
+@import "../../styles/variable";
+
+.divider {
+  background-color: $toy-split-color;
+
+  &.divider-vertical {
+    height: 100%;
+    width: 1px;
+    margin: 0 $toy-div-margin;
+  }
+
+  &.divider-horizontal {
+    width: 100%;
+    height: 1px;
+    margin: $toy-div-margin 0;
+  }
+}
