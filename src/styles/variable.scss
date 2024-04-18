@@ -1,37 +1,51 @@
+@use 'sass:color';
+
 :root {
-  --toy-text-color: rgba(0, 0, 0, 0.88);
-  --toy-blue: #1677ff;
-  --toy-purple: #722ED1;
-  --toy-cyan: #13C2C2;
-  --toy-green: #52C41A;
-  --toy-magenta: #EB2F96;
-  --toy-pink: #eb2f96;
-  --toy-red: #F5222D;
-  --toy-orange: #FA8C16;
-  --toy-yellow: #FADB14;
-  --toy-volcano: #FA541C;
-  --toy-geekblue: #2F54EB;
-  --toy-gold: #FAAD14;
-  --toy-lime: #A0D911;
+  --var-blue: #1677FFFF;
+  --var-purple: #722ED1;
+  --var-cyan: #13C2C2;
+  --var-green: #52C41A;
+  --var-magenta: #EB2F96;
+  --var-pink: #eb2f96;
+  --var-red: #FF3537FF;
+  --var-orange: #FA8C16;
+  --var-yellow: #FADB14;
+  --var-volcano: #FA541C;
+  --var-geekblue: #2F54EB;
+  --var-gold: #FAAD14;
+  --var-lime: #A0D911;
+  --var-gray: #05050514;
+  --var-white: #FFFFFFE0;
 
-  --toy-color-primary: var(--toy-blue);
-  --toy-color-success: var(--toy-green);
-  --toy-color-warning: var(--toy-gold);
-  --toy-color-error: #ff4d4f;
-  --toy-color-info: var(--toy-blue);
-  --toy-color-link: var(--toy-blue);
-  --toy-color-text-base: #000;
-  --toy-color-bg-base: #fff;
+  --var-text-color: rgba(0, 0, 0, 0.88);
+  --var-color-bg-base: #fff;
+  --var-text-font-size: 14px;
+  --var-color-default: red;
 
-  --toy-color-split: rgb(5, 5, 5, 0.08);
 
-  --toy-text-font-size: 14px;
+  /**
+  --------------------
+    以下为当前主题变量
+    虽然这个东西暂且不考虑多皮肤的情况
+  --------------------
+   */
+
+  --toy-color-default: var(--var-white);
+  --toy-color-primary: var(--var-blue);
+  --toy-color-success: var(--var-green);
+  --toy-color-warning: var(--var-gold);
+  --toy-color-error: var(--var-red);
+  --toy-color-info: rgba(var(--var-blue), 0.8);
+  --toy-color-link: var(--var-blue);
+
+  --toy-text-color: var(--var-text-color);
+  --toy-text-font-size: var(--var-text-font-size);
+
+  --toy-color-bg-base: var(--var-color-bg-base);
+  --toy-split-color: var(--var-gray);
+
+  --toy-div-margin: 16px;
+  --toy-text-padding: 6px;
+  --toy-div-border-shadow: 2px;
+  --toy-div-border-radius: 4px;
 }
-
-$toy-text-color: var(--toy-text-color);
-$toy-text-font-size: var(--toy-text-font-size);
-$toy-text-padding: 6px;
-
-$toy-color-bg-base: var(--toy-color-bg-base);
-$toy-split-color: var(--toy-color-split);
-$toy-div-margin: 16px;
