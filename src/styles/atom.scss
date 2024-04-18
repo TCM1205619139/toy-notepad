@@ -1,0 +1,39 @@
+@mixin flex($display: flex, $direction: row, $justify: center, $align: center) {
+  display: $display;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin flex-center($display: flex, $direction: row) {
+  @include flex($display, $direction);
+}
+
+@mixin flex-start ($direction: row) {
+  @include flex(flex, $direction, flex-start, flex-start)
+}
+
+@mixin flex-end ($direction: row) {
+  @include flex(flex, $direction, flex-end, flex-end)
+}
+
+@mixin size-cover {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flex-grow-scroll($direction: row) {
+  @if $direction == row {
+    height: 100%;
+    width: 0;
+    flex-grow: 1;
+    overflow: auto;
+  } @else if $direction == column {
+    width: 100%;
+    height: 0;
+    flex-grow: 1;
+    overflow: auto;
+  } @else {}
+}
+
+

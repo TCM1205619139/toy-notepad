@@ -1,6 +1,13 @@
+@import "@/styles/atom.scss";
+
 .catalogue-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  @include size-cover;
+  @include flex-start(column);
+  padding: 2px 0;
+
+  .actions-group {
+    @include flex-start(row);
+    grid-gap: 4px;
+    flex-wrap: wrap;
+  }
 }

@@ -7,13 +7,13 @@
   &::after {
     position: relative;
     content: '';
-    background-color: $toy-split-color;
+    background-color: var(--toy-split-color);
   }
 
   &.vertical {
     height: 100%;
     width: 1px;
-    margin: 0 $toy-div-margin;
+    margin: 0 var(--toy-div-margin);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,13 +25,13 @@
     }
 
     .divider-content {
-      padding: $toy-text-padding 0;
+      padding: --toy-text-padding 0;
     }
   }
 
   &.horizontal {
     width: 100%;
-    margin: $toy-div-margin 0;
+    margin: --toy-div-margin 0;
     display: flex;
     align-items: center;
 
@@ -42,7 +42,7 @@
     }
 
     .divider-content {
-      padding: 0 $toy-text-padding;
+      padding: 0 --toy-text-padding;
     }
   }
 }
