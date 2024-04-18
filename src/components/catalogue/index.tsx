@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { HTMLAttributes, useState } from 'react'
 import { Divider, Button } from '@/components'
 // import Gather from '@/components/catalogue/gather'
 import './index.scss'
 
-const Catalogue: React.FC = () => {
+type Props = HTMLAttributes<HTMLDivElement>
+
+const Catalogue: React.FC<Props> = (props) => {
   const [gathers, setGathers] = useState<any[]>([
       {
         title: '工作日志',
@@ -34,9 +36,14 @@ const Catalogue: React.FC = () => {
   }
 
   return (
-    <section className="catalogue-container">
-      <Button size="small" >add a section</Button>
-      <Divider style={{ margin: '6px 0' }} direction="horizontal"/>
+    <section className="catalogue-container" {...props}>
+      <div className="actions-group">
+        <Button size="small" type="default">add a section</Button>
+        <Button size="small" type="primary">add a section</Button>
+        <Button size="small" type="success">add a section</Button>
+        <Button size="small" type="warning">add a section</Button>
+      </div>
+      <Divider style={{ margin: '8px 0' }} direction="horizontal"></Divider>
       {/*<Tree*/}
       {/*  defaultExpandedKeys={defaultExpandedKeys}*/}
       {/*  blockNode*/}
