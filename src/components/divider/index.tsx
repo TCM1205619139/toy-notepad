@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.scss'
 
 enum Direction {
@@ -6,16 +6,27 @@ enum Direction {
   HORIZONTAL = 'horizontal'
 }
 
-type Props = {
-  direction: `${Direction}`
-} & React.HtmlHTMLAttributes<HTMLDivElement>
+enum Orientation {
+  START = 'start',
+  MIDDLE = 'middle',
+  END = 'end'
+}
 
-const Divider: React.FC<Props> = (props) => {
-  const containerClass = `divider divider-${props.direction}`
+interface Props extends React.HtmlHTMLAttributes<HTMLDivElement> {
+  direction: `${Direction}`,
+  orientation?: `${Orientation}`
+}
 
+const Divider: React.FC<Props> = (props: Props = {
+  direction: Direction.VERTICAL,
+  orientation: Orientation.MIDDLE
+}) => {
   return (
-    <div className={containerClass}>
-
+    <div
+      className={`toy-divider ${props.direction} ${props.orientation}`}
+      { ...props }
+    >
+      { !!props.children && <span className="divider-content">{ props.children }</span> }
     </div>
   )
 }

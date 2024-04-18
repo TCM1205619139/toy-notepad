@@ -1,17 +1,48 @@
-@import "../../styles/variable";
+@import "@/styles/variable.scss";
 
-.divider {
-  background-color: $toy-split-color;
+.toy-divider {
+  position: relative;
 
-  &.divider-vertical {
+  &::before,
+  &::after {
+    position: relative;
+    content: '';
+    background-color: $toy-split-color;
+  }
+
+  &.vertical {
     height: 100%;
     width: 1px;
     margin: 0 $toy-div-margin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::before,
+    &::after {
+      width: 1px;
+      flex: 1;
+    }
+
+    .divider-content {
+      padding: $toy-text-padding 0;
+    }
   }
 
-  &.divider-horizontal {
+  &.horizontal {
     width: 100%;
-    height: 1px;
     margin: $toy-div-margin 0;
+    display: flex;
+    align-items: center;
+
+    &::before,
+    &::after {
+      flex: 1;
+      height: 1px;
+    }
+
+    .divider-content {
+      padding: 0 $toy-text-padding;
+    }
   }
 }
