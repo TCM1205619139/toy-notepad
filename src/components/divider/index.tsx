@@ -17,18 +17,20 @@ interface Props extends React.HtmlHTMLAttributes<HTMLDivElement> {
   orientation?: `${Orientation}`
 }
 
-const Divider: React.FC<Props> = (props: Props = {
-  direction: Direction.VERTICAL,
-  orientation: Orientation.MIDDLE
-}) => {
+const Divider: React.FC<Props> = ({ direction, orientation, ...props }) => {
   return (
     <div
-      className={`toy-divider ${props.direction} ${props.orientation}`}
+      className={`toy-divider ${direction} ${orientation}`}
       { ...props }
     >
       { !!props.children && <span className="divider-content">{ props.children }</span> }
     </div>
   )
+}
+
+Divider.defaultProps = {
+  direction: Direction.VERTICAL,
+  orientation: Orientation.MIDDLE
 }
 
 export default Divider

@@ -1,16 +1,18 @@
 import React, { HTMLAttributes } from 'react'
 import './index.scss'
 
-interface Props extends HTMLAttributes<HTMLButtonElement> {
+type HTMLButtonAttributes = HTMLAttributes<HTMLButtonElement>
+
+type Props = HTMLButtonAttributes & {
   type?: `${ToyComponent.BaseTypes}`
   size?: `${ToyComponent.Sizes}`
 }
 
-const Button: React.FC<Props> = (props) => {
+const Button: React.FC<Props> = ({ size, type, ...props }) => {
   return (
     <button
-      className={`toy-button ${props.size} ${props.type}`}
-      {...props as HTMLAttributes<HTMLButtonElement>}
+      className={`toy-button ${size} ${type}`}
+      { ...props }
     >
       { props.children }
     </button>
