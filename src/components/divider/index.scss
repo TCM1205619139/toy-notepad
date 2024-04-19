@@ -25,13 +25,13 @@
     }
 
     .divider-content {
-      padding: --toy-text-padding 0;
+      padding: var(--toy-text-padding) 0;
     }
   }
 
   &.horizontal {
     width: 100%;
-    margin: --toy-div-margin 0;
+    margin: var(--toy-div-margin) 0;
     display: flex;
     align-items: center;
 
@@ -42,7 +42,7 @@
     }
 
     .divider-content {
-      padding: 0 --toy-text-padding;
+      padding: 0 var(--toy-text-padding);
     }
   }
 }
