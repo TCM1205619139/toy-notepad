@@ -1,5 +1,3 @@
-@use "sass:color";
-
 @import "@/styles/variable.scss";
 @import "@/styles/atom.scss";
 
@@ -8,28 +6,51 @@
   border-radius: $toy-div-border-radius;
 
   $types: (
-      default: $toy-color-default,
-      primary: $toy-color-primary,
-      success: $toy-color-success,
-      warning: $toy-color-warning
+    default: $toy-color-default,
+    primary: $toy-color-primary,
+    success: $toy-color-success,
+    warning: $toy-color-warning
   );
 
   @each $type, $value in $types {
     $type-bg-color: $value;
-    $border-color: if($type == 'default', $toy-border-color, $type-bg-color);
-    $text-color: if($type == 'default', $toy-text-color, $white);
+    $border-color: is-default($type, $toy-border-color, $type-bg-color);
+    $text-color: is-default($type, $toy-text-color, $white);
 
     &.#{$type} {
       box-shadow: 0 0 $toy-div-border-shadow rgba($type-bg-color, 0.06);
       background-color: $type-bg-color;
       border: 1px solid $border-color;
       color: $text-color;
+      transition: all 0.3s;
 
       &:hover {
         cursor: pointer;
-        background-color: rgba($type-bg-color, 0.88);
-        color: if($type == 'default', $toy-color-primary, $white)
+        background-color: rgba($type-bg-color, 0.72);
+        color: is-default($type, $toy-color-primary, $white);
+        border: 1px solid is-default($type, $toy-color-primary, $type-bg-color);
+        transition: all 0.3s;
       }
+
+      &:active {
+        background-color: is-default($type, $type-bg-color, blackness($type-bg-color, 5%));
+        border: 1px solid is-default($type, blackness($toy-color-primary, 20%), blackness($type-bg-color, 10%));
+        color: is-default($type, blackness($toy-color-primary, 20%), $text-color);
+      }
+    }
+  }
+
+  $sizes-step: (
+    large: 1,
+    middle: 0,
+    small: -0.5,
+    mini: -1
+  );
+
+  @each $size, $step in $sizes-step {
+    &.#{$size} {
+      padding: $toy-size-step * ($step + 3) $toy-size-step * ($step + 3);
+      font-size: $toy-text-font-size + calc($step * $toy-size-step / 2);
     }
   }
 }

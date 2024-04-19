@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @mixin flex($display: flex, $direction: row, $justify: center, $align: center) {
   display: $display;
   justify-content: $justify;
@@ -37,3 +39,10 @@
 }
 
 
+@function is-default ($type, $true, $false) {
+  @return if($type == 'default', $true, $false);
+}
+
+@function blackness ($color, $percent: 10%) {
+  @return color.adjust($color, $red: -$percent, $green: -$percent, $blue: -$percent);
+}
