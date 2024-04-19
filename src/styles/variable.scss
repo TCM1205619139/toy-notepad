@@ -1,51 +1,55 @@
 @use 'sass:color';
 
-:root {
-  --var-blue: #1677FFFF;
-  --var-purple: #722ED1;
-  --var-cyan: #13C2C2;
-  --var-green: #52C41A;
-  --var-magenta: #EB2F96;
-  --var-pink: #eb2f96;
-  --var-red: #FF3537FF;
-  --var-orange: #FA8C16;
-  --var-yellow: #FADB14;
-  --var-volcano: #FA541C;
-  --var-geekblue: #2F54EB;
-  --var-gold: #FAAD14;
-  --var-lime: #A0D911;
-  --var-gray: #05050514;
-  --var-white: #FFFFFFE0;
+$blue: #1677FFFF;
+$purple: #722ED1;
+$cyan: #13C2C2;
+$green: #52C41A;
+$magenta: #EB2F96;
+$pink: #eb2f96;
+$red: #FF3537FF;
+$orange: #FA8C16;
+$yellow: #FADB14;
+$volcano: #FA541C;
+$geekblue: #2F54EB;
+$gold: #FAAD14;
+$lime: #A0D911;
+$gray: #05050514;
+$white: #FFFFFFE0;
+$smoke: #D6D6D6FF;
 
-  --var-text-color: rgba(0, 0, 0, 0.88);
-  --var-color-bg-base: #fff;
-  --var-text-font-size: 14px;
-  --var-color-default: red;
+$text-color: rgba(0, 0, 0, 0.88);
+$color-bg-base: #fff;
+$text-font-size: 14px;
+$color-default: red;
 
 
-  /**
-  --------------------
-    以下为当前主题变量
-    虽然这个东西暂且不考虑多皮肤的情况
-  --------------------
-   */
+/**
+--------------
+  color 相关
+--------------
+ */
+$toy-color-default: $white;
+$toy-color-primary: $blue;
+$toy-color-success: $green;
+$toy-color-warning: $gold;
+$toy-color-error: $red;
+$toy-color-info: rgba($blue, 0.8);
+$toy-color-link: $blue;
 
-  --toy-color-default: var(--var-white);
-  --toy-color-primary: var(--var-blue);
-  --toy-color-success: var(--var-green);
-  --toy-color-warning: var(--var-gold);
-  --toy-color-error: var(--var-red);
-  --toy-color-info: rgba(var(--var-blue), 0.8);
-  --toy-color-link: var(--var-blue);
+$toy-text-color: $text-color;
+$toy-text-font-size: $text-font-size;
 
-  --toy-text-color: var(--var-text-color);
-  --toy-text-font-size: var(--var-text-font-size);
+$toy-color-bg-base: $color-bg-base;
+$toy-split-color: $gray;
+$toy-border-color: $smoke;
 
-  --toy-color-bg-base: var(--var-color-bg-base);
-  --toy-split-color: var(--var-gray);
 
-  --toy-div-margin: 16px;
-  --toy-text-padding: 6px;
-  --toy-div-border-shadow: 2px;
-  --toy-div-border-radius: 4px;
-}
+/**
+--------------
+  盒子相关
+--------------
+ */
+$toy-div-margin: 16px;
+$toy-div-padding: 6px;
+$toy-div-border-shadow: 2px;
+$toy-div-border-radius: 4px;
