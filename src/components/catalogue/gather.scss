@@ -1,6 +1,37 @@
+@use "sass:math";
+
+@import "@/styles/atom.scss";
+@import "@/styles/variable.scss";
+
 .gather-container {
   width: 100%;
-  display: flex;
-  align-items: center;
-  grid-column-gap: 4px;
+  padding: math.div($toy-div-padding, 2);
+
+  .title-container {
+    user-select: none;
+    @include flex(flex, row, flex-start, center);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .arrow-filling {
+      &.down {
+        @include rotate-animation(0deg);
+      }
+
+      &.right {
+        @include rotate-animation(-90deg);
+      }
+    }
+
+    .title {
+      line-height: 150%;
+      @include flex-grow-text-ellipsis;
+    }
+  }
+
+  .details {
+    padding-left: $text-font-size;
+  }
 }

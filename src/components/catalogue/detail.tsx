@@ -1,17 +1,19 @@
-// import React, { ReactNode } from 'react'
-// import { Tree } from 'antd'
-//
-// const Gather: React.FC<TreeDataNode> = (detail: TreeDataNode) => {
-//   const Content = () => (
-//     <div className="detail-container">
-//       <FileTextOutlined/>
-//       <span>{ detail.title as ReactNode }</span>
-//     </div>
-//   )
-//
-//   return (
-//     <Tree.TreeNode title={Content} key={detail.key}></Tree.TreeNode>
-//   )
-// }
-//
-// export default Gather
+import React, { HTMLAttributes } from 'react'
+import { Icon } from '@/components'
+import './detail.scss'
+
+type Props = HTMLAttributes<HTMLDivElement> & {
+  detail: ToyComponent.CatalogueItem
+}
+
+const Gather: React.FC<Props> = ({ detail, ...props}) => {
+
+  return (
+    <section { ...props } className="detail-container">
+      <Icon name='file-open' />
+      <span className="title">{ detail.title }</span>
+    </section>
+  )
+}
+
+export default Gather

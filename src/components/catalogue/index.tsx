@@ -1,12 +1,12 @@
 import React, { HTMLAttributes, useState } from 'react'
 import { Divider, Button } from '@/components'
-// import Gather from '@/components/catalogue/gather'
+import Gather from '@/components/catalogue/gather'
 import './index.scss'
 
 type Props = HTMLAttributes<HTMLDivElement>
 
 const Catalogue: React.FC<Props> = (props) => {
-  const [gathers, setGathers] = useState<any[]>([
+  const [gathers, setGathers] = useState<ToyComponent.CatalogueItem[]>([
       {
         title: '工作日志',
         key: '工作日志',
@@ -14,6 +14,22 @@ const Catalogue: React.FC<Props> = (props) => {
           {
             title: '2024年3月11日工作日志',
             key: '0-0-0-0',
+          },
+          {
+            title: '2024年3月12日工作日志',
+            key: '0-0-0-1',
+          },
+          {
+            title: '2024年3月13日工作日志',
+            key: '0-0-0-2',
+          },
+          {
+            title: '2024年3月14日工作日志',
+            key: '0-0-0-3',
+          },
+          {
+            title: '2024年3月15日工作日志',
+            key: '0-0-0-4',
           }
         ]
       },
@@ -29,32 +45,20 @@ const Catalogue: React.FC<Props> = (props) => {
     }
     ]
   )
-  const [defaultExpandedKeys] = useState(() => ['0-0'])
-
-  const onSelect = () => {
-
-  }
 
   return (
     <section className="catalogue-container" {...props}>
       <div className="actions-group">
-        <Button size="small" type="default">add a section</Button>
-        <Button size="small" type="primary">add a section</Button>
-        <Button size="small" type="success">add a section</Button>
-        <Button size="small" type="warning">add a section</Button>
+        <Button size="mini" type="default" >增加文件夹</Button>
       </div>
       <Divider style={{ margin: '8px 0' }} direction="horizontal"></Divider>
-      {/*<Tree*/}
-      {/*  defaultExpandedKeys={defaultExpandedKeys}*/}
-      {/*  blockNode*/}
-      {/*  showIcon*/}
-      {/*>*/}
-      {/*  {*/}
-      {/*    gathers.map(gather => {*/}
-      {/*      return Gather(gather)*/}
-      {/*    })*/}
-      {/*  }*/}
-      {/*</Tree>*/}
+      <section className="catalogue">
+        {
+          gathers.map(gather => {
+            return <Gather key={gather.key} gather={gather} />
+          })
+        }
+      </section>
     </section>
   )
 }

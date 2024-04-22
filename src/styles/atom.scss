@@ -24,18 +24,33 @@
   height: 100%;
 }
 
-@mixin flex-grow-scroll($direction: row) {
+@mixin flex-grow-scroll($direction: row, $overflow: auto) {
   @if $direction == row {
     height: 100%;
     width: 0;
     flex-grow: 1;
-    overflow: auto;
+    overflow: $overflow;
   } @else if $direction == column {
     width: 100%;
     height: 0;
     flex-grow: 1;
-    overflow: auto;
+    overflow: $overflow;
   } @else {}
+}
+
+@mixin flex-grow-text-ellipsis {
+  @include flex-grow-scroll(row, hidden);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin flex-grow-aa {
+  text-overflow: ellipsis;
+}
+
+@mixin rotate-animation($deg, $duration: 0.3s) {
+  transform: rotate($deg);
+  transition: all $duration;
 }
 
 

@@ -1,0 +1,14 @@
+@use "sass:math";
+
+@import "@/styles/atom.scss";
+@import "@/styles/variable.scss";
+
+.detail-container {
+  @include flex(flex, row, flex-start, center);
+  padding: math.div($toy-div-padding, 4);
+
+  .title {
+    line-height: 150%;
+    @include flex-grow-text-ellipsis;
+  }
+}
