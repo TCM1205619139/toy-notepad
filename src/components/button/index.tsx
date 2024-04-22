@@ -10,10 +10,7 @@ type Props = HTMLButtonAttributes & {
 
 const Button: React.FC<Props> = ({ size, type, ...props }) => {
   return (
-    <button
-      className={`toy-button ${size} ${type}`}
-      { ...props }
-    >
+    <button{ ...props } className={`toy-button ${size} ${type}`}>
       { props.children }
     </button>
   )

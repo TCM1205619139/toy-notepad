@@ -20,7 +20,7 @@ const Gather: React.FC<Props> = (props) => {
   }
 
   return (
-    <section className="gather-container" { ...props }>
+    <section { ...props } className="gather-container">
       <div
         className="title-container"
         onClick={() => switchOpen(gather)}

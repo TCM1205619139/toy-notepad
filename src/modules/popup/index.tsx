@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom/client'
-import { Divider, Catalogue, Button } from '@/components'
+import { Divider, Catalogue } from '@/components'
 import './index.scss'
 
 import ToyEditor from '@/components/toy-editor'
-// import Catalogue from '@/components/catalogue'
 
 const App: React.FC = () => {
   return (

@@ -20,8 +20,8 @@ interface Props extends React.HtmlHTMLAttributes<HTMLDivElement> {
 const Divider: React.FC<Props> = ({ direction, orientation, ...props }) => {
   return (
     <div
-      className={`toy-divider ${direction} ${orientation}`}
       { ...props }
+      className={`toy-divider ${direction} ${orientation}`}
     >
       { !!props.children && <span className="divider-content">{ props.children }</span> }
     </div>

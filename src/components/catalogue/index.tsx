@@ -47,7 +47,7 @@ const Catalogue: React.FC<Props> = (props) => {
   )
 
   return (
-    <section className="catalogue-container" {...props}>
+    <section {...props} className="catalogue-container">
       <div className="actions-group">
         <Button size="mini" type="default" >增加文件夹</Button>
       </div>
