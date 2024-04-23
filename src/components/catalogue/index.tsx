@@ -1,5 +1,4 @@
 import React, { HTMLAttributes, useState } from 'react'
-import { Divider, Button } from '@/components'
 import Gather from '@/components/catalogue/gather'
 import './index.scss'
 
