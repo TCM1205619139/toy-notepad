@@ -46,21 +46,15 @@ const Catalogue: React.FC<Props> = (props) => {
     ]
   )
 
-  return (
-    <section {...props} className="catalogue-container">
-      <div className="actions-group">
-        <Button size="mini" type="default" >增加文件夹</Button>
-      </div>
-      <Divider style={{ margin: '8px 0' }} direction="horizontal"></Divider>
-      <section className="catalogue">
-        {
-          gathers.map(gather => {
-            return <Gather key={gather.key} gather={gather} />
-          })
-        }
-      </section>
+  return (<>
+    <section className="catalogue">
+      {
+        gathers.map(gather => {
+          return <Gather key={gather.key} gather={gather} />
+        })
+      }
     </section>
-  )
+  </>)
 }
 
 export default Catalogue
