@@ -19,7 +19,8 @@ declare namespace ToyComponent {
     title: string,
     key: string,
     children?: CatalogueItem[],
-    open?: boolean
+    open?: boolean,
+    isEdit?: boolean
   }
 
   export enum IconName {
@@ -29,6 +30,7 @@ declare namespace ToyComponent {
     'folder-close' = '&#xe671',
     'file-open' = '&#xe670',
     'image-text' = '&#xe675',
-    'arrow-down-filling' = '&#xe688'
+    'arrow-down-filling' = '&#xe688',
+    'gz-rz' = '&#xe636'
   }
 }
