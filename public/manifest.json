@@ -1,5 +1,5 @@
 {
-  "name": "toylat",
+  "name": "toy-note",
   "manifest_version": 3,
   "version": "0.0.1",
   "description": "Sweet·Tang's toy",
@@ -13,7 +13,6 @@
     "tabs"
   ],
   "host_permissions": [
-    "https://www.baidu.com/",
     "http://localhost/",
     "*://*/*"
   ],
