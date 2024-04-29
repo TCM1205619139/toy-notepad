@@ -13,6 +13,7 @@ const Catalogue: React.FC<Props> = (props) => {
           {
             title: '2024年3月11日工作日志',
             key: '0-0-0-0',
+            isEdit: true
           },
           {
             title: '2024年3月12日工作日志',

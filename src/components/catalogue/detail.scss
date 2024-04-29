@@ -6,9 +6,25 @@
 .detail-container {
   @include flex(flex, row, flex-start, center);
   padding: math.div($toy-div-padding, 4);
+  grid-gap: 0 2px;
+
+  &:hover {
+    .operators {
+      opacity: 1;
+    }
+  }
 
   .title {
-    line-height: 150%;
     @include flex-grow-text-ellipsis;
+    line-height: 150%;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  .operators {
+    opacity: 0;
+    transition: opacity 0.1s;
   }
 }
