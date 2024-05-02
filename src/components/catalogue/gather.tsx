@@ -10,8 +10,8 @@ type Props = HTMLDivElementAttributes & {
   gather: ToyComponent.CatalogueItem
 }
 
-const Gather: React.FC<Props> = (props) => {
-  const [gather, setGather] = useState<ToyComponent.CatalogueItem>(props.gather)
+const Gather: React.FC<Props> = ({ gather: propsGather, ...props }) => {
+  const [gather, setGather] = useState<ToyComponent.CatalogueItem>(propsGather)
   const switchOpen = (item: ToyComponent.CatalogueItem) => {
     setGather({
       ...item,

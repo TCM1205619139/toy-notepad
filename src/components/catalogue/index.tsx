@@ -5,15 +5,14 @@ import './index.scss'
 type Props = HTMLAttributes<HTMLDivElement>
 
 const Catalogue: React.FC<Props> = (props) => {
-  const [gathers, setGathers] = useState<ToyComponent.CatalogueItem[]>([
+  const [catalogue, setCatalogue] = useState<ToyComponent.CatalogueItem[]>([
       {
         title: '工作日志',
         key: '工作日志',
         children: [
           {
             title: '2024年3月11日工作日志',
-            key: '0-0-0-0',
-            isEdit: true
+            key: '0-0-0-0'
           },
           {
             title: '2024年3月12日工作日志',
@@ -46,10 +45,14 @@ const Catalogue: React.FC<Props> = (props) => {
     ]
   )
 
+  const setGather = (gather: ToyComponent.CatalogueItem) => {
+
+  }
+
   return (<>
     <section className="catalogue">
       {
-        gathers.map(gather => {
+        catalogue.map(gather => {
           return <Gather key={gather.key} gather={gather} />
         })
       }
