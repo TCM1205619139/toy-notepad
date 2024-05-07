@@ -1,0 +1,20 @@
+@mixin spread-animation {
+  .spread {
+    &.spread-enter {
+      height: 0;
+      //@include $inActive;
+    }
+
+    &.spread-enter-active {
+      height: auto;
+    }
+
+    &.spread-exit {
+      height: auto;
+    }
+
+    &.spread-exit-active {
+      height: 0;
+    }
+  }
+}
