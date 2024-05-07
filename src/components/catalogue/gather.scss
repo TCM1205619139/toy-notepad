@@ -2,6 +2,7 @@
 
 @import "@/styles/atom.scss";
 @import "@/styles/variable.scss";
+@import "@/styles/animation.scss";
 
 .gather-container {
   width: 100%;
@@ -33,5 +34,7 @@
 
   .details {
     padding-left: $text-font-size;
+
+    @include spread-animation;
   }
 }
