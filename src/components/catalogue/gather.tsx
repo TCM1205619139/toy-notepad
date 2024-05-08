@@ -31,17 +31,19 @@ const Gather: React.FC<Props> = ({ gather: propsGather, ...props }) => {
         />
         <span className="title">{ gather.title }</span>
       </div>
-      {
-        gather.open && (
-          <div className="details">
-            {
-              (gather.children || []).map(detail => {
-                return <Detail key={detail.key} detail={detail} />
-              })
-            }
-          </div>
-        )
-      }
+      <CSSTransition>
+        {
+          gather.open && (
+            <div className="details">
+              {
+                (gather.children || []).map(detail => {
+                  return <Detail key={detail.key} detail={detail} />
+                })
+              }
+            </div>
+          )
+        }
+      </CSSTransition>
     </section>
   )
 }
