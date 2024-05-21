@@ -6,10 +6,11 @@
 
 .gather-container {
   width: 100%;
-  padding: math.div($toy-div-padding, 2);
+  padding: 0 math.div($toy-div-padding, 2);
 
   .title-container {
     user-select: none;
+    padding-bottom: math.div($toy-div-padding, 2);
     @include flex(flex, row, flex-start, center);
 
     &:hover {
@@ -34,7 +35,5 @@
 
   .details {
     padding-left: $text-font-size;
-
-    @include spread-animation;
   }
 }
