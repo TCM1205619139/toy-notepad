@@ -2,58 +2,17 @@ import React, { HTMLAttributes, useState } from 'react'
 import Gather from '@/components/catalogue/gather'
 import './index.scss'
 
-type Props = HTMLAttributes<HTMLDivElement>
+type Props = HTMLAttributes<HTMLDivElement> & {
+  data: ToyComponent.CatalogueItem[]
+}
 
-const Catalogue: React.FC<Props> = (props) => {
-  const [catalogue, setCatalogue] = useState<ToyComponent.CatalogueItem[]>([
-      {
-        title: '工作日志',
-        key: '工作日志',
-        children: [
-          {
-            title: '2024年3月11日工作日志',
-            key: '0-0-0-0'
-          },
-          {
-            title: '2024年3月12日工作日志',
-            key: '0-0-0-1',
-          },
-          {
-            title: '2024年3月13日工作日志',
-            key: '0-0-0-2',
-          },
-          {
-            title: '2024年3月14日工作日志',
-            key: '0-0-0-3',
-          },
-          {
-            title: '2024年3月15日工作日志',
-            key: '0-0-0-4',
-          }
-        ]
-      },
-    {
-      title: '请假记录',
-      key: '请假记录',
-      children: [
-        {
-          title: '2024年4与12日请假记录',
-          key: '0-0-0-0',
-        }
-      ]
-    }
-    ]
-  )
-
-  const setGather = (gather: ToyComponent.CatalogueItem) => {
-
-  }
+const Catalogue: React.FC<Props> = ({data: catalogue, ...props}) => {
 
   return (<>
     <section className="catalogue">
       {
         catalogue.map(gather => {
-          return <Gather key={gather.key} gather={gather} />
+          return <Gather key={gather.key} gather={gather}/>
         })
       }
     </section>

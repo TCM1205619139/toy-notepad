@@ -1,3 +1,5 @@
+@import "variable";
+
 .collapse-transition {
-  transition: 0.1s max-height ease-in-out, 0.1s opacity ease-in-out;
+  transition: $transition-duration max-height ease-in-out, $transition-duration opacity ease-in-out;
 }

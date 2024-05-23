@@ -4,8 +4,9 @@ import React, {
   useRef
 } from 'react'
 import { Transition } from 'react-transition-group'
-import { Icon } from '@/components'
+import { Icon, Button } from '@/components'
 import Detail from '@/components/catalogue/detail'
+import { useSpreadAnimation } from '@/components/catalogue/use-animation'
 
 import './gather.scss'
 
@@ -18,57 +19,13 @@ type Props = HTMLDivElementAttributes & {
 const Gather: React.FC<Props> = ({gather: propsGather, ...props}) => {
   const [gather, setGather] = useState<ToyComponent.CatalogueItem>(propsGather)
   const detail = useRef<HTMLDivElement>(null)
+  const { onExited, onExit, onExiting, onEntered, onEntering, onEnter } = useSpreadAnimation(detail)
 
   const switchOpen = (item: ToyComponent.CatalogueItem) => {
     setGather({
       ...item,
       open: !item.open
     })
-  }
-
-  const onEnter = () => {
-    const el = detail.current as HTMLDivElement
-
-    el.dataset.maxHeight = el.clientHeight + 'px'
-    el.dataset.overflow = el.style.overflow
-    el.style.maxHeight = '0px'
-    el.style.overflow = 'hidden'
-    el.classList.add('collapse-transition')
-  }
-  const onEntering = () => {
-    const el = detail.current as HTMLDivElement
-
-    setTimeout(() => {
-      el.style.maxHeight = el.dataset.maxHeight || ''
-    })
-  }
-  const onEntered = () => {
-    const el = detail.current as HTMLDivElement
-
-    el.style.maxHeight = ''
-    el.style.overflow = ''
-    el.classList.remove('collapse-transition')
-  }
-  const onExit = () => {
-    const el = detail.current as HTMLDivElement
-
-    el.style.maxHeight = el.dataset.maxHeight || ''
-    el.style.overflow = 'hidden'
-    el.classList.add('collapse-transition')
-  }
-  const onExiting = () => {
-    const el = detail.current as HTMLDivElement
-
-    setTimeout(() => {
-      el.style.maxHeight = '0px'
-    })
-  }
-  const onExited = () => {
-    const el = detail.current as HTMLDivElement
-
-    el.style.maxHeight = '0px'
-    el.style.overflow = ''
-    el.classList.remove('collapse-transition')
   }
 
   return (
@@ -80,9 +37,12 @@ const Gather: React.FC<Props> = ({gather: propsGather, ...props}) => {
         <Icon
           name="arrow-down-filling"
           className={`arrow-filling ${gather.open ? 'down' : 'right'}`}
+          style={{ height: '20px' }}
         />
-        <span
-          className="title">{gather.title}</span>
+        <span className="title">{gather.title}</span>
+        <div className="actions">
+          <Button icon={<Icon name="add" size="mini"></Icon>} size="mini"></Button>
+        </div>
       </div>
       <Transition
         in={gather.open}

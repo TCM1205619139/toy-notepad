@@ -24,14 +24,14 @@
         background-color: $type-bg-color;
         border: 1px solid $border-color;
         color: $text-color;
-        transition: all 0.3s;
+        transition: all $transition-duration;
 
         &:hover {
           cursor: pointer;
           background-color: rgba($type-bg-color, 0.72);
           color: is-default($type, $toy-color-primary, $white);
           border: 1px solid is-default($type, $toy-color-primary, $type-bg-color);
-          transition: all 0.3s;
+          transition: all $transition-duration;
         }
 
         &:active {
