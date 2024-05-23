@@ -11,12 +11,16 @@ const Icon: React.FC<Props> = ({ size, name, ...props}) => {
   const svgName = `#icon-${name}`
 
   return (
-    <div { ...props } className={`toy-icon ${size ?? ''}`}>
+    <div { ...props } className={`toy-icon ${props.className ?? ''} ${size ?? ''}`}>
       <svg className="icon" aria-hidden="true">
         <use xlinkHref={svgName}></use>
       </svg>
     </div>
   )
+}
+
+Icon.defaultProps = {
+  size: 'middle'
 }
 
 export default Icon

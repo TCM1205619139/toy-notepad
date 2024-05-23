@@ -35,6 +35,7 @@
     .title {
       line-height: 150%;
       @include flex-grow-text-ellipsis;
+      height: 20px;
     }
 
     .actions {

@@ -37,11 +37,11 @@ const Gather: React.FC<Props> = ({gather: propsGather, ...props}) => {
         <Icon
           name="arrow-down-filling"
           className={`arrow-filling ${gather.open ? 'down' : 'right'}`}
-          style={{ height: '20px' }}
+          size="mini"
         />
         <span className="title">{gather.title}</span>
         <div className="actions">
-          <Button icon={<Icon name="add" size="mini"></Icon>} size="mini"></Button>
+          <Button icon={<Icon name="add" size="small"></Icon>} size="mini"></Button>
         </div>
       </div>
       <Transition

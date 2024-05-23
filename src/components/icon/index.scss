@@ -2,18 +2,20 @@
 
 .toy-icon {
   $padding: 2px;
+  $font-size: 16px;
   @include flex-center(inline-flex);
 
 
   $sizes: (
     large: 1,
     middle: 0,
-    small: -0.5,
-    mini: -1
+    small: -1,
+    mini: -2
   );
   @each $size, $step in $sizes {
     &.#{$size} {
-      padding: $padding + $step * 2
+      padding: $padding + $step;
+      font-size: $font-size + $step * 2;
     }
   }
 

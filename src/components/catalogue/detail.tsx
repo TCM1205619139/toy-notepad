@@ -54,7 +54,7 @@ const Detail: React.FC<Props> = ({ detail: propsDetail, ...props}) => {
 
   return (
     <section { ...props } className="detail-container">
-      <Icon name="gz-rz" />
+      <Icon name="gz-rz" size="mini" />
       {
         detail.isEdit
           ? <input
