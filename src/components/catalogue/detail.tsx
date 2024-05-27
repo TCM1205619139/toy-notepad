@@ -8,17 +8,24 @@ import React, {
 } from 'react'
 import { Icon, Button } from '@/components'
 import './detail.scss'
-import CatalogueItem = ToyComponent.CatalogueItem
 
 type Props = HTMLAttributes<HTMLDivElement> & {
-  detail: ToyComponent.CatalogueItem
+  detail: Omit<ToyComponent.CatalogueItem, 'children'>
+  onDeleteDetail: (detail: ToyComponent.CatalogueItem) => void
 }
 
-const Detail: React.FC<Props> = ({ detail: propsDetail, ...props}) => {
+const Detail: React.FC<Props> = ({
+ detail: propsDetail,
+ onDeleteDetail,
+ ...props
+}) => {
   const [detail, setDetail] = useState(propsDetail)
   const titleInputRef = createRef<HTMLInputElement>()
 
-  const saveDetailTitle = (detail: CatalogueItem) => {
+  const saveDetailTitle = (detail: ToyComponent.CatalogueItem) => {
+    if (!detail.title.trim()) {
+      onDeleteDetail(detail)
+    }
     setDetailState({
       ...detail,
       isEdit: false
@@ -39,7 +46,7 @@ const Detail: React.FC<Props> = ({ detail: propsDetail, ...props}) => {
     })
   }
 
-  const setDetailState = (state: Partial<CatalogueItem>) => {
+  const setDetailState = (state: Partial<ToyComponent.CatalogueItem>) => {
     setDetail({
       ...detail,
       ...state
@@ -53,8 +60,8 @@ const Detail: React.FC<Props> = ({ detail: propsDetail, ...props}) => {
   }
 
   return (
-    <section { ...props } className="detail-container">
-      <Icon name="gz-rz" size="mini" />
+    <section {...props} className="detail-container">
+      <Icon name="gz-rz" size="mini"/>
       {
         detail.isEdit
           ? <input
@@ -65,18 +72,18 @@ const Detail: React.FC<Props> = ({ detail: propsDetail, ...props}) => {
             onChange={onDetailTitleChange}
             onKeyUp={onKeyUpSaveDetailTitle}
           />
-          : <span className="title">{ detail.title }</span>
+          : <span className="title">{detail.title}</span>
       }
       <div className="operators">
-        { detail.isEdit }
+        {detail.isEdit}
         {
           !detail.isEdit
             ? <Button
-              icon={<Icon name="edit" style={{ fontSize: '15px', padding: 0 }}/>}
+              icon={<Icon name="edit" style={{fontSize: '15px', padding: 0}}/>}
               onClick={startEditDetailTitle}
             />
             : <Button
-              icon={<Icon name="edit" style={{ fontSize: '15px', padding: 0 }}/>}
+              icon={<Icon name="edit" style={{fontSize: '15px', padding: 0}}/>}
             />
         }
       </div>
