@@ -4,6 +4,7 @@ import { Divider, Catalogue, Button } from '@/components'
 import './index.scss'
 
 import ToyEditor from '@/components/toy-editor'
+import { generateEmptyGather } from '@/components/catalogue/use-base'
 
 const App: React.FC = () => {
   const [catalogues, setCatalogues] = useState<ToyComponent.CatalogueItem[]>([
@@ -44,18 +45,9 @@ const App: React.FC = () => {
       ]
     }
   ])
-  const [artists, setArtists] = useState<any[]>([])
 
   const addGather = () => {
-    const empty: ToyComponent.CatalogueItem = {
-      title: '1111',
-      key: '2222',
-      open: false,
-      isEdit: true,
-      children: []
-    }
-    setCatalogues([...catalogues, empty])
-    console.log(catalogues)
+    setCatalogues([...catalogues, generateEmptyGather()])
   }
 
   return (

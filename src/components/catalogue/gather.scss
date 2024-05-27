@@ -10,15 +10,24 @@
 
   .title-container {
     user-select: none;
+    height: 24px;
     padding-bottom: math.div($toy-div-padding, 2);
     @include flex(flex, row, flex-start, center);
 
     &:hover {
-      cursor: pointer;
-
       .actions {
         transition: all $transition-duration;
         display: unset;
+      }
+
+      .title-content {
+        .title {
+          cursor: pointer;
+        }
+      }
+
+      .arrow-filling {
+        cursor: pointer;
       }
     }
 
@@ -32,10 +41,13 @@
       }
     }
 
-    .title {
-      line-height: 150%;
+    .title-content {
+      @include flex(flex, row, flex-start, center);
       @include flex-grow-text-ellipsis;
-      height: 20px;
+
+      .title {
+        line-height: 150%;
+      }
     }
 
     .actions {
