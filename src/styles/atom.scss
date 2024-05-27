@@ -45,10 +45,6 @@
   white-space: nowrap;
 }
 
-@mixin flex-grow-aa {
-  text-overflow: ellipsis;
-}
-
 @mixin rotate-animation($deg, $duration: $transition-duration) {
   transform: rotate($deg);
   transition: all $duration;
