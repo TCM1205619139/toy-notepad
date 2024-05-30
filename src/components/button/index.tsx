@@ -9,7 +9,12 @@ type Props = HTMLButtonAttributes & {
   icon?: ReactNode
 }
 
-const Button: React.FC<Props> = ({ size, type, icon, ...props }) => {
+const Button: React.FC<Props> = ({
+  size = 'small',
+  type = 'default',
+  icon = '',
+  ...props
+}) => {
   const isIconButton = !!icon
 
   return (
@@ -18,11 +23,6 @@ const Button: React.FC<Props> = ({ size, type, icon, ...props }) => {
       { props.children }
     </button>
   )
-}
-
-Button.defaultProps = {
-  type: 'default',
-  size: 'small'
 }
 
 export default Button

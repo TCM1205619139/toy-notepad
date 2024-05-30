@@ -7,7 +7,11 @@ type Props = HTMLAttributes<HTMLDivElement> & {
   size?: `${ToyComponent.Sizes}`
 }
 
-const Icon: React.FC<Props> = ({ size, name, ...props}) => {
+const Icon: React.FC<Props> = ({
+ size = 'middle',
+ name,
+ ...props
+}) => {
   const svgName = `#icon-${name}`
 
   return (
@@ -17,10 +21,6 @@ const Icon: React.FC<Props> = ({ size, name, ...props}) => {
       </svg>
     </div>
   )
-}
-
-Icon.defaultProps = {
-  size: 'middle'
 }
 
 export default Icon

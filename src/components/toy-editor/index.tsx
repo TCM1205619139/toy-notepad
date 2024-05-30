@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
+import './index.scss'
 
 const ToyEditor: React.FC = () => {
   const [editor, setEditor] = useState<IDomEditor | null>(null)
@@ -11,7 +12,7 @@ const ToyEditor: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="toy-editor-container">
       <Toolbar
         editor={editor}
         defaultConfig={toolbarConfig}
@@ -19,6 +20,7 @@ const ToyEditor: React.FC = () => {
         style={{ borderBottom: '1px solid #ccc' }}
       />
       <Editor
+        className="editor-container"
         defaultConfig={editorConfig}
         value={html}
         onCreated={setEditor}
