@@ -4,7 +4,7 @@
 @import "@/styles/variable.scss";
 @import "@/styles/animation.scss";
 
-.gather-container {
+.toy-tree-item {
   width: 100%;
   padding: 0 math.div($toy-div-padding, 2);
 
@@ -16,14 +16,9 @@
 
     &:hover {
       .actions {
-        transition: all $transition-duration;
-        display: unset;
-      }
-
-      .title-content {
-        .title {
-          cursor: pointer;
-        }
+        display: flex;
+        align-items: center;
+        grid-gap: math.div($toy-div-padding, 2);
       }
 
       .arrow-filling {
@@ -42,11 +37,12 @@
     }
 
     .title-content {
-      @include flex(flex, row, flex-start, center);
+      @include flex(flex, row, space-between, center);
       @include flex-grow-text-ellipsis;
 
       .title {
-        line-height: 150%;
+        @include flex-grow-text-ellipsis;
+        @include flex(flex, row, flex-start, center);
       }
     }
 
@@ -56,7 +52,7 @@
     }
   }
 
-  .details {
-    padding-left: $text-font-size;
+  .child-wrapper {
+    padding-left: $toy-div-padding * 2;
   }
 }

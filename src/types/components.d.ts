@@ -15,12 +15,14 @@ declare namespace ToyComponent {
     MINI = 'mini'
   }
 
-  export type CatalogueItem = {
-    title: string,
+  export type TreeNode<T> = {
+    label: string,
     key: string,
-    children?: CatalogueItem[],
-    open?: boolean,
-    isEdit?: boolean
+    isOpen: boolean,
+    isEdit: boolean,
+    parentKey: string,
+    isLeaf?: boolean,
+    data: T
   }
 
   export enum IconName {

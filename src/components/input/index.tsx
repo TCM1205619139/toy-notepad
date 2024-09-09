@@ -2,15 +2,11 @@ import React, { HTMLAttributes } from 'react'
 
 type InputType = 'text'
 
-type Props = HTMLAttributes<HTMLInputElement> & {
-  // type: InputType
-}
+type Props = HTMLAttributes<HTMLInputElement>
 const Input: React.FC<Props> = ({
   ...props
 }) => {
-  return (<>
-    <input autoFocus={true} type="text" {...props}/>
-  </>)
+  return (<input type="text" {...props}/>)
 }
 
 export default Input

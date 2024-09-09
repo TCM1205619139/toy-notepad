@@ -1,13 +1,15 @@
 import Divider from '@/components/divider'
-import Catalogue from '@/components/catalogue'
 import Button from '@/components/button'
 import Icon from '@/components/icon'
 import Input from '@/components/input'
+import Tree from '@/components/tree'
+import Catalogue from '@/components/catalogue'
 
 export {
   Divider,
-  Catalogue,
   Button,
   Icon,
-  Input
+  Input,
+  Tree,
+  Catalogue
 }

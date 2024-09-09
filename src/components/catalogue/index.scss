@@ -1,17 +1,31 @@
-@import "@/styles/atom.scss";
+.custom-title {
+  width: 228px;
+  display: flex;
+  justify-content: space-between;
 
-.catalogue-container {
-  @include size-cover;
-  @include flex-start(column);
-  padding: 2px 0;
-
-  .actions-group {
-    @include flex-start(row);
-    grid-gap: 4px;
-    flex-wrap: wrap;
+  .title {
+    width: 166px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .catalogue {
-    width: 100%;
+  .actions {
+    display: flex;
+    flex: 1;
+    visibility: hidden;
+  }
+
+  &:hover {
+    .actions {
+      visibility: visible;
+      align-items: center;
+    }
+  }
+}
+
+.ant-tree-class-wrapper {
+  .ant-tree-node-content-wrapper {
+    width: 0;
+    flex-grow: 1;
   }
 }
