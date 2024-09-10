@@ -100,8 +100,9 @@ const slice = createSlice({
     addProfile (state, action: PayloadAction<NodeFor<ToyNote.Profile>>) {
       state.profiles.unshift(action.payload)
     },
-    deleteProfile () {
-
+    deleteProfile (state, action: PayloadAction<NodeFor<ToyNote.Profile>>) {
+      const index = state.profiles.findIndex(profile => profile.id === action.payload.id)
+      state.profiles.splice(index, 1)
     },
     setProfiles (state, action: PayloadAction<NodeFor<ToyNote.Profile>[]>) {
       state.profiles = action.payload

@@ -5,11 +5,13 @@ import { cloneDeep } from 'lodash'
 
 import store, { useAppDispatch, useAppSelectors } from '@/store'
 import {
+  NodeFor,
   addGather,
   addProfile,
-  NodeFor,
   setGathers,
-  setProfiles
+  setProfiles,
+  deleteGather,
+  deleteProfile
 } from '@/store/work-space'
 
 import { createGather, createProfile } from '@/components/tree/create-node'
@@ -55,26 +57,22 @@ const App: React.FC = () => {
   }
   const onSaveCatalogue = (node: NodeFor<ToyNote.Gather | ToyNote.Profile>) => {
     if (node.isLeaf) {
+      if (!node.title) return dispatch(deleteProfile(node as NodeFor<ToyNote.Profile>))
       const index = profiles.findIndex(profile => profile.id === node.id)
       if (index === -1) return
 
       const cloneProfiles = cloneDeep(profiles)
 
-      cloneProfiles.splice(index, 1, {
-        ...(node as NodeFor<ToyNote.Profile>),
-        isEdit: false
-      })
+      cloneProfiles.splice(index, 1, (node as NodeFor<ToyNote.Profile>))
       dispatch(setProfiles(cloneProfiles))
     } else {
+      if (!node.title) return dispatch(deleteGather(node as NodeFor<ToyNote.Gather>))
       const index = gathers.findIndex(profile => profile.id === node.id)
       if (index === -1) return
 
       const cloneGathers = cloneDeep(gathers)
 
-      cloneGathers.splice(index, 1, {
-        ...(node as NodeFor<ToyNote.Gather>),
-        isEdit: false
-      })
+      cloneGathers.splice(index, 1, (node as NodeFor<ToyNote.Gather>))
       dispatch(setGathers(cloneGathers))
     }
   }

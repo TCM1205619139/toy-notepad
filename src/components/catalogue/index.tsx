@@ -74,43 +74,34 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
         node.isEdit
           ? <Input
             size="small"
+            className="title"
             ref={editInput}
             id={node.id}
             defaultValue={node.title}
-            onBlur={() => onSave(node)}
+            onBlur={() => onSave({ ...node, isEdit: false })}
+            onChange={evt => node.title = evt.target.value.trim()}
           />
           : <span className="title">{ node.title }</span>
       }
       <div className="actions">
-        {
-          node.isEdit
-            ? (
-              <ConfigProvider wave={{ disabled: true }}>
-                <Button
-                  size="small"
-                  icon={<SaveOutlined/>}
-                  style={{ border: 0, backgroundColor: 'transparent' }}
-                />
-              </ConfigProvider>
-            )
-            : (
-              <ConfigProvider wave={{ disabled: true }}>
-                {
-                  !node.isLeaf && <Button
-                    size="small"
-                    icon={<PlusOutlined/>}
-                    style={{ border: 0, backgroundColor: 'transparent' }}
-                    onClick={() => onAdd(node)}
-                  />
-                }
-                <Button
-                  size="small"
-                  icon={<EditOutlined/>}
-                  style={{ border: 0, backgroundColor: 'transparent' }}
-                />
-              </ConfigProvider>
-            )
-        }
+        <ConfigProvider wave={{ disabled: true }}>
+          {
+            (!node.isLeaf && !node.isEdit) && <Button
+              size="small"
+              icon={<PlusOutlined/>}
+              style={{ border: 0, backgroundColor: 'transparent' }}
+              onClick={() => onAdd(node)}
+            />
+          }
+          {
+            !node.isEdit && <Button
+              size="small"
+              icon={<EditOutlined/>}
+              style={{ border: 0, backgroundColor: 'transparent' }}
+              onClick={() => onSave({...node, isEdit: true})}
+            />
+          }
+        </ConfigProvider>
       </div>
     </div>
   }
@@ -119,11 +110,10 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
     <Tree
       className="ant-tree-class-wrapper"
       blockNode
-      multiple
       defaultExpandAll
+      treeData={treeData}
       onSelect={onSelect}
       onExpand={onExpand}
-      treeData={treeData}
       titleRender={RenderContent}
     />
   );

@@ -1,16 +1,15 @@
 .custom-title {
-  width: 228px;
   display: flex;
   justify-content: space-between;
 
   .title {
-    width: 166px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .actions {
     display: flex;
+    justify-content: flex-end;
     flex: 1;
     visibility: hidden;
   }
