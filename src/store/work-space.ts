@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { deleteKeys } from '@/utils/object'
 import {
   getGathersFromDB,
   getProfilesFromDB,
@@ -7,12 +6,6 @@ import {
   updateGatherDB, deleteGatherDB
 } from '@/api/popup'
 
-// export type NodeFor<T> = {
-//   isLeaf: boolean
-//   isEdit: boolean
-//   isOpen: boolean,
-//   children?:
-// } & T
 export type NodeFor<T> = T extends ToyNote.Profile
   ? {
   isLeaf: boolean

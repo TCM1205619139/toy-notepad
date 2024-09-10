@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect, useRef } from 'react'
 import { Button, ConfigProvider, Tree, Input } from 'antd'
-import type { GetProps, TreeDataNode, InputRef } from 'antd'
+import type { GetProps, InputRef } from 'antd'
 import {
   EditOutlined,
   FileOutlined, FolderOpenOutlined, FolderOutlined,

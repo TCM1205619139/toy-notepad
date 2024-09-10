@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
 import dayjs from 'dayjs'
-// import dayjs from 'dayjs'
 
 export const createNode = <T extends { title: string, children?: any[] }>(data: T): ToyComponent.TreeNode<T> => {
   return {

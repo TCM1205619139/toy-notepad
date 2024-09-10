@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo } from 'react'
 import ReactDom from 'react-dom/client'
 import { Provider as StoreProvider } from 'react-redux'
-import { cloneDeep } from 'lodash'
-
-import { addGatherDB, updateGatherDB } from '@/api/popup'
 import store, { useAppDispatch, useAppSelectors } from '@/store'
 import {
   NodeFor,
