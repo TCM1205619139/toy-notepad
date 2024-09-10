@@ -15,7 +15,6 @@ declare namespace ToyNote {
   export type Gather = {
     title: string
     id: string
-    createTime: string,
-    children: Profile[]
+    createTime: string
   }
 }

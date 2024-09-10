@@ -65,13 +65,13 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
   }, [data])
   const editInput = useRef<InputRef>(null)
 
-  const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-    console.log('Trigger Select', keys, info);
-  };
-
-  const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
-    console.log('Trigger Expand', keys, info);
-  };
+  // const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
+  //   console.log('Trigger Select', keys, info);
+  // };
+  //
+  // const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
+  //   console.log('Trigger Expand', keys, info);
+  // };
 
   const RenderContent = (node: any) => {
     return <div className="custom-title">
@@ -112,7 +112,6 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
   }
 
   const renderIcon = (node: any) => {
-    console.log(node)
     return node.isLeaf
       ? <FileOutlined />
       : node.expanded
@@ -128,8 +127,6 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
       showIcon
       icon={renderIcon}
       treeData={treeData}
-      onSelect={onSelect}
-      onExpand={onExpand}
       titleRender={RenderContent}
     />
   );

@@ -18,8 +18,7 @@ export const createGather = (exits: ToyNote.Gather[]): ToyNote.Gather => {
   return {
     title: `文件夹-${exits.length + 1}`,
     id: uuidv4(),
-    createTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-    children: []
+    createTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
   }
 }
 

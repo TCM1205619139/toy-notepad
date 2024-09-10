@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import ReactDom from 'react-dom/client'
 import { Provider as StoreProvider } from 'react-redux'
 import { cloneDeep } from 'lodash'
 
+import { addGatherDB, updateGatherDB } from '@/api/popup'
 import store, { useAppDispatch, useAppSelectors } from '@/store'
 import {
   NodeFor,
-  addGather,
-  addProfile,
-  setGathers,
-  setProfiles,
+  setGather,
+  setProfile,
   deleteGather,
-  deleteProfile
+  deleteProfile,
+  loadGathers,
+  loadProfiles
 } from '@/store/work-space'
 
 import { createGather, createProfile } from '@/components/tree/create-node'
@@ -34,9 +35,15 @@ const App: React.FC = () => {
     })
   }, [gathers, profiles])
 
+  useEffect(() => {
+    dispatch(loadGathers())
+    dispatch(loadProfiles())
+  }, [])
+
   const onAddGather = () => {
-    dispatch(addGather({
+    dispatch(setGather({
       ...createGather(gathers),
+      children: [],
       isLeaf: false,
       isOpen: false,
       isEdit: true
@@ -44,7 +51,7 @@ const App: React.FC = () => {
   }
 
   const onAddProfile = (gather: NodeFor<ToyNote.Gather>) => {
-    dispatch(addProfile({
+    dispatch(setProfile({
       ...createProfile(gather, gather.children),
       isEdit: true,
       isOpen: false,
@@ -58,22 +65,10 @@ const App: React.FC = () => {
   const onSaveCatalogue = (node: NodeFor<ToyNote.Gather | ToyNote.Profile>) => {
     if (node.isLeaf) {
       if (!node.title) return dispatch(deleteProfile(node as NodeFor<ToyNote.Profile>))
-      const index = profiles.findIndex(profile => profile.id === node.id)
-      if (index === -1) return
-
-      const cloneProfiles = cloneDeep(profiles)
-
-      cloneProfiles.splice(index, 1, (node as NodeFor<ToyNote.Profile>))
-      dispatch(setProfiles(cloneProfiles))
+      dispatch(setProfile(node as NodeFor<ToyNote.Profile>))
     } else {
       if (!node.title) return dispatch(deleteGather(node as NodeFor<ToyNote.Gather>))
-      const index = gathers.findIndex(profile => profile.id === node.id)
-      if (index === -1) return
-
-      const cloneGathers = cloneDeep(gathers)
-
-      cloneGathers.splice(index, 1, (node as NodeFor<ToyNote.Gather>))
-      dispatch(setGathers(cloneGathers))
+      dispatch(setGather(node as NodeFor<ToyNote.Gather>))
     }
   }
 
@@ -85,7 +80,6 @@ const App: React.FC = () => {
             <ToyButton size="mini" type="default" onClick={onAddGather}>增加文件夹</ToyButton>
           </div>
           <ToyDivider style={{ margin: '8px 0' }} direction="horizontal" />
-          {/*<ToyTree data={catalogue} defaultExpandAll={true} />*/}
           <ToyCatalogue data={catalogue} onSave={onSaveCatalogue} onAdd={onAddCatalogue}></ToyCatalogue>
         </section>
         <ToyDivider direction="vertical" style={{ margin: '0 6px' }} />
