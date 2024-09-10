@@ -1,7 +1,12 @@
 import React, { useMemo, useEffect, useRef } from 'react'
 import { Button, ConfigProvider, Tree, Input } from 'antd'
 import type { GetProps, TreeDataNode, InputRef } from 'antd'
-import { EditOutlined, PlusOutlined, SaveOutlined } from '@ant-design/icons'
+import {
+  EditOutlined,
+  FileOutlined, FolderOpenOutlined, FolderOutlined,
+  PlusOutlined,
+  SaveOutlined
+} from '@ant-design/icons'
 import type { NodeFor } from '@/store/work-space'
 
 import "./index.scss"
@@ -106,11 +111,22 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
     </div>
   }
 
+  const renderIcon = (node: any) => {
+    console.log(node)
+    return node.isLeaf
+      ? <FileOutlined />
+      : node.expanded
+        ? <FolderOpenOutlined />
+        : <FolderOutlined />
+  }
+
   return (
     <Tree
       className="ant-tree-class-wrapper"
       blockNode
       defaultExpandAll
+      showIcon
+      icon={renderIcon}
       treeData={treeData}
       onSelect={onSelect}
       onExpand={onExpand}
