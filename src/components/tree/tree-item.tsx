@@ -6,7 +6,6 @@ import { Icon } from '@/components'
 import { useSpreadAnimation } from '@/composables/use-animation'
 import { createNode } from '@/components/tree/create-node'
 import './tree-item.scss'
-import { NodeFor } from '@/store/work-space'
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   node: ToyComponent.TreeNode<ToyNote.Profile | ToyNote.Gather>

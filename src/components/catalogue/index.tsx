@@ -3,13 +3,13 @@ import { Button, ConfigProvider, Tree, Input } from 'antd'
 import type { GetProps, InputRef } from 'antd'
 import {
   EditOutlined,
-  FileOutlined, FolderOpenOutlined, FolderOutlined,
-  PlusOutlined,
-  SaveOutlined
+  FileOutlined,
+  FolderOpenOutlined,
+  FolderOutlined,
+  PlusOutlined
 } from '@ant-design/icons'
-import type { NodeFor } from '@/store/work-space'
 
-import "./index.scss"
+import './index.scss'
 
 type DirectoryTreeProps = GetProps<typeof Tree.DirectoryTree>
 
@@ -45,8 +45,8 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
      * Bug2：快速点击【创建文件夹】按钮，会导致多个 Input 框进入编辑状态
      */
     const focus = data.find(gather => {
-      return gather.isEdit || gather.children.find(profile => {
-        return (profile as NodeFor<ToyNote.Profile>).isEdit
+      return gather.isEdit || gather.children.find((profile: NodeFor<ToyNote.Profile>) => {
+        return profile.isEdit
       })
     })
 

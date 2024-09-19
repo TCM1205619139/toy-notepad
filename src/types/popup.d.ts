@@ -18,3 +18,16 @@ declare namespace ToyNote {
     createTime: string
   }
 }
+
+type NodeFor<T> = T extends ToyNote.Profile
+  ? {
+  isLeaf: boolean
+  isOpen: boolean
+  isEdit: boolean
+} & T
+  : {
+  isLeaf: boolean
+  isOpen: boolean
+  isEdit: boolean
+  children: NodeFor<ToyNote.Profile>[]
+} & T

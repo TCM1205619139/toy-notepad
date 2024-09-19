@@ -3,7 +3,6 @@ import ReactDom from 'react-dom/client'
 import { Provider as StoreProvider } from 'react-redux'
 import store, { useAppDispatch, useAppSelectors } from '@/store'
 import {
-  NodeFor,
   setGather,
   setProfile,
   deleteGather,
