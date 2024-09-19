@@ -4,7 +4,7 @@ import {
   getProfilesFromDB,
   addGatherDB,
   updateGatherDB,
-  deleteGatherDB
+  deleteGatherDB, deleteProfilesDB, addProfileDB, updateProfileDB
 } from '@/api/popup'
 
 interface WorkSpaceState {
@@ -48,14 +48,17 @@ const slice = createSlice({
     deleteProfile(state, action: PayloadAction<NodeFor<ToyNote.Profile>>) {
       const index = state.profiles.findIndex(profile => profile.id === action.payload.id)
       state.profiles.splice(index, 1)
+      deleteProfilesDB([action.payload])
     },
     setProfile(state, action: PayloadAction<NodeFor<ToyNote.Profile>>) {
       const index = state.profiles.findIndex(profile => profile.id === action.payload.id)
 
       if (index === -1) {
         state.profiles.unshift(action.payload)
+        addProfileDB(action.payload)
       } else {
         state.profiles.splice(index, 1, action.payload)
+        updateProfileDB(action.payload)
       }
     },
     setProfiles(state, action: PayloadAction<NodeFor<ToyNote.Profile>[]>) {

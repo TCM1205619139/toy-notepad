@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import ReactDom from 'react-dom/client'
 import { Provider as StoreProvider } from 'react-redux'
+
 import store, { useAppDispatch, useAppSelectors } from '@/store'
 import {
   setGather,
@@ -10,13 +11,11 @@ import {
   loadGathers,
   loadProfiles
 } from '@/store/work-space'
-
 import { createGather, createProfile } from '@/components/tree/create-node'
 import { Divider as ToyDivider, Button as ToyButton, Tree as ToyTree, Catalogue as ToyCatalogue } from '@/components'
 import ToyEditor from '@/components/toy-editor'
 
 import './index.scss'
-
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();

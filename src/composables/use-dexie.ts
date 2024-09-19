@@ -6,7 +6,7 @@ const db = new Dexie('toy-note') as Dexie & {
   profiles: EntityTable<ToyNote.Profile, 'id'>
 }
 
-db.version(1).stores({
+db.version(2).stores({
   gathers: 'id, title, createTime',
   profiles: 'id, title, createTime, gather'
 })
