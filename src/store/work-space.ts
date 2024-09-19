@@ -3,21 +3,9 @@ import {
   getGathersFromDB,
   getProfilesFromDB,
   addGatherDB,
-  updateGatherDB, deleteGatherDB
+  updateGatherDB,
+  deleteGatherDB
 } from '@/api/popup'
-
-export type NodeFor<T> = T extends ToyNote.Profile
-  ? {
-  isLeaf: boolean
-  isOpen: boolean
-  isEdit: boolean
-} & T
-  : {
-  isLeaf: boolean
-  isOpen: boolean
-  isEdit: boolean
-  children: NodeFor<ToyNote.Profile>[]
-} & T
 
 interface WorkSpaceState {
   gathers: NodeFor<ToyNote.Gather>[]
@@ -104,7 +92,17 @@ export const {
 export const loadGathers = () => {
   return (dispatch: any) => {
     getGathersFromDB().then(gathers => {
-      dispatch(setGathers(gathers))
+      dispatch(
+        setGathers(gathers.map(gather => {
+          return {
+            ...gather,
+            isEdit: false,
+            isOpen: false,
+            isLeaf: false,
+            children: []
+          }
+        }))
+      )
     })
   }
 }
@@ -112,7 +110,16 @@ export const loadGathers = () => {
 export const loadProfiles = () => {
   return (dispatch: any) => {
     getProfilesFromDB().then(profiles => {
-      dispatch(setProfiles(profiles))
+      dispatch(
+        setProfiles(profiles.map(profile => {
+          return {
+            ...profile,
+            isEdit: false,
+            isOpen: false,
+            isLeaf: true
+          }
+        }))
+      )
     })
   }
 }
