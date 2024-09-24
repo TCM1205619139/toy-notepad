@@ -18,7 +18,7 @@ $width: 800px;
 
     .catalogue-container {
       @include size-cover;
-      @include flex-start(column);
+      @include flex(flex, column, flex-start, unset);
       padding: 2px 0;
 
       .actions-group {

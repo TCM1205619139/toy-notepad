@@ -70,7 +70,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <div className="content">
-        <section className="catalogue-wrapper">
+        <section className="catalogue-container">
           <div className="actions-group">
             <ToyButton size="mini" type="default" onClick={onAddGather}>增加文件夹</ToyButton>
           </div>
