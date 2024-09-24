@@ -1,0 +1,59 @@
+@import "@/styles/atom.scss";
+
+$thrumder: 17px;
+$zIndex: 1000;
+
+.toy-scrollbar-container {
+  @include size-cover;
+  position: relative;
+  overflow: hidden;
+
+  .toy-scrollbar-wrapper {
+    margin-bottom: $thrumder;
+    margin-right: $thrumder;
+    overflow: scroll;
+    width: calc(100% + $thrumder);
+    height: calc(100% + $thrumder);
+
+    .toy-scrollbar-view {
+
+    }
+
+    .toy-scrollbar__bar {
+      //display: none;
+      opacity: 1;
+      transition: opacity .34s ease-out;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      padding: 2px 0;
+      border-radius: 4px;
+
+      &.right {
+        height: 100%;
+        width: 12px;
+        right: 0;
+        top: 0;
+        z-index: $zIndex;
+        background-color: rgba(0, 0, 0, 0.04);
+
+        .toy-scrollbar__thumb {
+          width: 8px;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+        }
+      }
+
+      &.bottom {
+        z-index: $zIndex + 1;
+        bottom: 0;
+        left: 0;
+        padding: 2px 4px;
+      }
+    }
+  }
+
+  &:hover {
+
+  }
+}
