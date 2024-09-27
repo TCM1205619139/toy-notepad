@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect, useRef } from 'react'
 import { Button, ConfigProvider, Tree, Input } from 'antd'
+import { Scrollbar } from '@/components'
 import type { GetProps, InputRef } from 'antd'
 import {
   EditOutlined,
@@ -120,15 +121,19 @@ const Catalogue: React.FC<Props> = ({ data, onSave, onAdd }) => {
   }
 
   return (
-    <Tree
-      className="ant-tree-class-wrapper"
-      blockNode
-      defaultExpandAll
-      showIcon
-      icon={renderIcon}
-      treeData={treeData}
-      titleRender={RenderContent}
-    />
+    <div className="tree-wrapper">
+      <Scrollbar>
+        <Tree
+          className="ant-tree-class-wrapper"
+          blockNode
+          defaultExpandAll
+          showIcon
+          icon={renderIcon}
+          treeData={treeData}
+          titleRender={RenderContent}
+        />
+      </Scrollbar>
+    </div>
   );
 }
 
